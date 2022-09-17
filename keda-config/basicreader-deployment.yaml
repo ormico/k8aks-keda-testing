@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: basicreader-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: basicreader-deployment
+  template:
+    metadata:
+      labels:
+        app: basicreader-deployment
+    spec:
+      containers:
+      - name: basicreader-deployment
+        image: ormicodemo.azurecr.io/akskedademo.basicreaderworker:1.0.0.3
+        env:
+        - name: queueName
+          value: q1
+        - name: ConnectionStrings__serviceBus
+          valueFrom:
+            secretKeyRef:
+             name: basicreader-secret
+             key: servicebus-connectionstring
