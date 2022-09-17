@@ -5,16 +5,16 @@ WORKDIR /app
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["ConsoleWorker1/ConsoleWorker1.csproj", "ConsoleWorker1/"]
-RUN dotnet restore "ConsoleWorker1/ConsoleWorker1.csproj"
+COPY ["ConsoleWorker1/AksKedaDemo.ConsoleWorker1.csproj", "ConsoleWorker1/"]
+RUN dotnet restore "ConsoleWorker1/AksKedaDemo.ConsoleWorker1.csproj"
 COPY . .
 WORKDIR "/src/ConsoleWorker1"
-RUN dotnet build "ConsoleWorker1.csproj" -c Release -o /app/build
+RUN dotnet build "AksKedaDemo.ConsoleWorker1.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "ConsoleWorker1.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "AksKedaDemo.ConsoleWorker1.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "ConsoleWorker1.dll"]
+ENTRYPOINT ["dotnet", "AksKedaDemo.ConsoleWorker1.dll"]

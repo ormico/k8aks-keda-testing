@@ -1,5 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
-
+﻿<Project Sdk="Microsoft.NET.Sdk;Microsoft.NET.Sdk.Publish">
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
@@ -7,8 +6,8 @@
     <Nullable>enable</Nullable>
     <UserSecretsId>3eb3cff9-481d-4325-805b-7c2e88142195</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileTag>ormico/akskedademo.consoleworker1</DockerfileTag>
   </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="Azure.Messaging.ServiceBus" Version="7.10.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1" />
@@ -17,11 +16,9 @@
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
   </ItemGroup>
-
   <ItemGroup>
     <None Update="appsettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-
 </Project>

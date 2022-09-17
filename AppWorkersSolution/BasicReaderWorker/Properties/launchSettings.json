@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "BasicReaderWorker": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}

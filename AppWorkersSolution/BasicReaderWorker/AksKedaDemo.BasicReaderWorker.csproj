@@ -1,10 +1,12 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
 		<TargetFramework>net6.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-		<UserSecretsId>b5cb9389-f980-4265-9bd1-dfa2ff28e6fb</UserSecretsId>
+		<UserSecretsId>985bc89c-754e-414e-a11c-e504505c7601</UserSecretsId>
+		<DockerfileTag>ormico/akskedademo.basicreaderworker</DockerfileTag>
+		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Azure.Messaging.ServiceBus" Version="7.10.0" />
@@ -12,6 +14,7 @@
 		<PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="6.0.1" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="6.0.1" />
 		<PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
+		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Update="appsettings.json">
