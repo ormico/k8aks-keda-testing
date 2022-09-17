@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "ConsoleWorker1": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "beta": "7890"
+      }
+    }
+  }
+}
