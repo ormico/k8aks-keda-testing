@@ -29,7 +29,7 @@ try
     # cleanup
     docker rmi ormicodemo.azurecr.io/ormico/akskedademo.consoleworker1:$Version;
     docker rmi ormicodemo.azurecr.io/ormico/akskedademo.basicreaderworker:$Version;
-    docker rmi ormicodemo.azurecr.io/ormico/akskedademo.basicwriterworker:$Version    ;
+    docker rmi ormicodemo.azurecr.io/ormico/akskedademo.basicwriterworker:$Version;
 }
 catch
 {
