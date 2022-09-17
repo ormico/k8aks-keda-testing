@@ -25,12 +25,24 @@ var clientOptions = new ServiceBusClientOptions()
 await using ServiceBusClient queueClient = new(serviceBusConnectionString, clientOptions);
 
 CancellationTokenSource cts = new();
+
+int cancelCount = 0;
+// or use PosixSignalRegistration.Create(PosixSignal.SIGINT, fun context ->
 Console.CancelKeyPress += (object? sender, ConsoleCancelEventArgs args) =>
 {
-    Console.Write("Cancelling...");
-    args.Cancel = true;
-    cts.Cancel();
-    Console.WriteLine();
+    cancelCount++;
+    if(cancelCount < 2)
+    {
+        Console.WriteLine("Press [CTRL]+C again to exit.");
+        args.Cancel = true;
+    }
+    else
+    {
+        Console.Write("Cancelling...");
+        args.Cancel = true;
+        cts.Cancel();
+        Console.WriteLine();
+    }
 };
 
 Console.WriteLine("Press [CTRL]+C to Cancel.");
