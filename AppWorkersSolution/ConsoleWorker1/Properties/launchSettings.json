@@ -5,6 +5,9 @@
       "environmentVariables": {
         "beta": "7890"
       }
+    },
+    "Docker": {
+      "commandName": "Docker"
     }
   }
 }
