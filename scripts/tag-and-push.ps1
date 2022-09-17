@@ -1,20 +1,39 @@
-$version = '1.0.0.1';
+<#
+.SYNOPSIS
+Push and Tag ormico/akskedademo containers
+.DESCRIPTION    
+Push and Tag ormico/akskedademo containers
+.PARAMETER Version
+Version string in the format 1.2.3.4
+.EXAMPLE
+.\tag-and-push -Version "1.2.3.4"
+#>
 
-# tag
-docker tag ormico/akskedademo.consoleworker1:latest ormicodemo.azurecr.io/ormico/akskedademo.consoleworker1:$version
+param
+(
+    [Parameter(Mandatory=$true)][string]$Version
+)
 
-docker tag ormico/akskedademo.basicreaderworker:latest ormicodemo.azurecr.io/ormico/akskedademo.basicreaderworker:$version
-
-docker tag ormico/akskedademo.basicwriterworker:latest ormicodemo.azurecr.io/ormico/akskedademo.basicwriterworker:$version
-
-# push
-docker push ormicodemo.azurecr.io/ormico/akskedademo.consoleworker1:$version
-docker push ormicodemo.azurecr.io/ormico/akskedademo.basicreaderworker:$version
-docker push ormicodemo.azurecr.io/ormico/akskedademo.basicwriterworker:$version
-
-# cleanup
-docker rmi ormicodemo.azurecr.io/ormico/akskedademo.consoleworker1:$version
-
-docker rmi ormicodemo.azurecr.io/ormico/akskedademo.basicreaderworker:$version
-
-docker rmi ormicodemo.azurecr.io/ormico/akskedademo.basicwriterworker:$version
+try
+{
+    # tag
+    docker tag ormico/akskedademo.consoleworker1:latest ormicodemo.azurecr.io/ormico/akskedademo.consoleworker1:$Version;
+    docker tag ormico/akskedademo.basicreaderworker:latest ormicodemo.azurecr.io/ormico/akskedademo.basicreaderworker:$Version;
+    docker tag ormico/akskedademo.basicwriterworker:latest ormicodemo.azurecr.io/ormico/akskedademo.basicwriterworker:$Version;
+    
+    # push
+    docker push ormicodemo.azurecr.io/ormico/akskedademo.consoleworker1:$Version;
+    docker push ormicodemo.azurecr.io/ormico/akskedademo.basicreaderworker:$Version;
+    docker push ormicodemo.azurecr.io/ormico/akskedademo.basicwriterworker:$Version;
+    
+    # cleanup
+    docker rmi ormicodemo.azurecr.io/ormico/akskedademo.consoleworker1:$Version;
+    docker rmi ormicodemo.azurecr.io/ormico/akskedademo.basicreaderworker:$Version;
+    docker rmi ormicodemo.azurecr.io/ormico/akskedademo.basicwriterworker:$Version    ;
+}
+catch
+{
+    Write-Host "Error: $_";
+    exit -1;
+}
+exit 0;
