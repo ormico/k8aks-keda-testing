@@ -24,10 +24,12 @@ var config = ReadConfiguration() ?? throw new Exception("Configuration is null")
 //Console.WriteLine($"does-not-exist='{config["does-not-exist"]}'");
 //Console.WriteLine($"queuName='{config["queueName"]}'");
 
-int numberOfMessages = int.Parse(config["numberOfMessages"]);
-int msgSendDelaySeconds = int.Parse(config["messageSendDelaySeconds"]);
 string serviceBusConnectionString = config.GetConnectionString("serviceBus");
 string queueName = config["queueName"];
+int numberOfMessages = int.Parse(config["numberOfMessages"]);
+int msgSendDelaySeconds = int.Parse(config["messageSendDelaySeconds"]);
+Console.WriteLine($"numberOfMessages = {numberOfMessages}");
+Console.WriteLine($"msgSendDelaySeconds = {msgSendDelaySeconds}");
 
 var clientOptions = new ServiceBusClientOptions()
 {
@@ -80,6 +82,8 @@ async Task SendMessagesAsync(int numMsgsToRepeat)
 
     try
     {
+        await using ServiceBusSender serviceBusSender = queueClient.CreateSender(queueName);
+
         for (var i = 0; i < numMsgsToRepeat; i++)
         {
             msgContent = $"UTC:{DateTime.UtcNow.ToString()} - {i}";
@@ -87,7 +91,7 @@ async Task SendMessagesAsync(int numMsgsToRepeat)
 
             Console.WriteLine($"Sending: '{msgContent}'");
 
-            await using ServiceBusSender serviceBusSender = queueClient.CreateSender(queueName);
+            //await using ServiceBusSender serviceBusSender = queueClient.CreateSender(queueName);
             await serviceBusSender.SendMessageAsync(message, cts.Token);
 
             if(msgSendDelaySeconds > 0)
