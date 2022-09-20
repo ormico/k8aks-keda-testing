@@ -32,3 +32,20 @@
 * Recalculation Aggregations when New Data is loaded
 * Buffer when one system can send tasks in batches faster than workers can handle.
 * Retry or buffer when a dependent system is down.
+
+## KEDA
+* Kubernetes Event-driven Autoscaling
+* Scale from Zero to N
+* Plugins for Scalers
+* https://keda.sh/docs/2.8/scalers/
+
+![Azure Service Bus, Rabbit MQ, SQL Server, Redis List, ...](docs/images/scaler-examples.png)
+
+## KEDA Authentication Providers
+* Like Scalers, KEDA includes several plugins for Authenticating Scalers
+* https://keda.sh/docs/2.8/authentication-providers/
+
+![Azure AD: Pod Identity, Workload Identity; Azure KeyVault; EKS Pod Identity; Hashicorp Vault; Environment Variables; K8 Secrets; ...](docs/images/authenticator-examples.png)
+
+
+
