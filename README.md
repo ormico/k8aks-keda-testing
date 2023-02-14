@@ -7,15 +7,6 @@
 * Applications must stay up and maintain consistency even when parts may be over stressed or go down.
   * Not only do you not want to lose data but you also don't want to duplicate data if writes are retried or systems go in and out of sync.
 
-## Problem
-* Add your first bullet point here
-* Add your second bullet point here
-* Add your third bullet point here
-
-## Current State
-* Add your first bullet point here
-* Add your second bullet point here
-* Add your third bullet point here
 
 ## Queues
 * First in/First out
